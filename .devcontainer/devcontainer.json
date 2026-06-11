@@ -1,0 +1,44 @@
+{
+  "name": "Node.js + Vite + Claude Code",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  // node ユーザーで実行（Claude Code は root では動かない）
+  "remoteUser": "node",
+
+  // ポートフォワーディング：Vite dev server のデフォルトポート
+  "forwardPorts": [5173],
+  "portsAttributes": {
+    "5173": {
+      "label": "Vite Dev Server",
+      "onAutoForward": "notify"
+    }
+  },
+
+  // 認証情報・設定をコンテナ再構築後も保持するボリューム
+  "mounts": [
+    "source=claude-code-config,target=/home/node/.claude,type=volume"
+  ],
+
+  // VSCode 拡張機能
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",       // Claude Code パネル
+        "dbaeumer.vscode-eslint",      // ESLint
+        "esbenp.prettier-vscode",      // Prettier
+        "bradlc.vscode-tailwindcss",   // Tailwind CSS（使う場合）
+        "vue.volar"                    // Vue を使う場合（不要なら削除可）
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      }
+    }
+  },
+
+  // コンテナ起動後に .claude ディレクトリのオーナーを修正
+  "postCreateCommand": "sudo chown -R node:node /home/node/.claude || true"
+}
