@@ -1,0 +1,122 @@
+import type { ReportTemplate } from "./pdf-report-simple";
+
+export const reportTemplate: ReportTemplate = {
+  id: "product_label_v1",
+  templatePdf: "/report-templates/product_label_v1.pdf",
+
+  fonts: {
+    jp: "/fonts/NotoSansJP_400Regular.ttf",
+    jpBold: "/fonts/NotoSansJP_700Bold.ttf",
+  },
+
+  fields: [
+    // Field values (bold)
+    {
+      type: "text",
+      key: "Product Name",
+      page: 0,
+      x: 73,
+      y: 220,
+      font: "jpBold",
+      fontSize: 9,
+    },
+    {
+      type: "text",
+      key: "Product Category Code",
+      page: 0,
+      x: 108,
+      y: 203,
+      font: "jpBold",
+      fontSize: 9,
+    },
+    {
+      type: "text",
+      key: "Lot No.",
+      page: 0,
+      x: 44,
+      y: 186,
+      font: "jpBold",
+      fontSize: 9,
+    },
+    {
+      type: "text",
+      key: "Product Date",
+      page: 0,
+      x: 68,
+      y: 169,
+      font: "jpBold",
+      fontSize: 9,
+    },
+    {
+      type: "text",
+      key: "Product Code",
+      page: 0,
+      x: 70,
+      y: 152,
+      font: "jpBold",
+      fontSize: 9,
+    },
+    {
+      type: "text",
+      key: "Control No.",
+      page: 0,
+      x: 60,
+      y: 135,
+      font: "jpBold",
+      fontSize: 9,
+    },
+    {
+      type: "text",
+      key: "Reference ID.",
+      page: 0,
+      x: 72,
+      y: 118,
+      font: "jpBold",
+      fontSize: 9,
+    },
+    {
+      type: "text",
+      key: "Section",
+      page: 0,
+      x: 45,
+      y: 101,
+      font: "jpBold",
+      fontSize: 9,
+    },
+    // QR code — Reference ID. (top right, 13pt from right edge)
+    {
+      type: "barcode",
+      key: "Reference ID.",
+      page: 0,
+      x: 311,
+      y: 108,
+      width: 126,
+      height: 126,
+      barcodeType: "qrcode",
+    },
+    // Barcode — Lot No. (bottom, 177pt from right edge)
+    {
+      type: "barcode",
+      key: "Lot No.",
+      page: 0,
+      x: 13,
+      y: 28,
+      width: 300,
+      height: 40,
+      barcodeType: "code39",
+      align: "center",
+    },
+    // Barcode label text
+    {
+      type: "text",
+      key: "Lot No.",
+      page: 0,
+      x: 13,
+      y: 14,
+      width: 300,
+      font: "jp",
+      fontSize: 8,
+      align: "center",
+    },
+  ],
+};
