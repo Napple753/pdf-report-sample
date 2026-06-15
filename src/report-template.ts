@@ -5,6 +5,8 @@ export const reportTemplate: ReportTemplate = {
   templatePdf: "/report-templates/product_label_v1.pdf",
 
   fonts: {
+    en: "/fonts/NotoSans_400Regular.ttf",
+    enBold: "/fonts/NotoSans_700Bold.ttf",
     jp: "/fonts/NotoSansJP_400Regular.ttf",
     jpBold: "/fonts/NotoSansJP_700Bold.ttf",
   },
@@ -17,7 +19,7 @@ export const reportTemplate: ReportTemplate = {
       page: 0,
       x: 73,
       y: 220,
-      font: "jpBold",
+      font: ["enBold", "jpBold"],
       fontSize: 9,
     },
     {
@@ -26,7 +28,7 @@ export const reportTemplate: ReportTemplate = {
       page: 0,
       x: 108,
       y: 203,
-      font: "jpBold",
+      font: ["enBold", "jpBold"],
       fontSize: 9,
     },
     {
@@ -35,7 +37,7 @@ export const reportTemplate: ReportTemplate = {
       page: 0,
       x: 44,
       y: 186,
-      font: "jpBold",
+      font: ["enBold", "jpBold"],
       fontSize: 9,
     },
     {
@@ -44,7 +46,7 @@ export const reportTemplate: ReportTemplate = {
       page: 0,
       x: 68,
       y: 169,
-      font: "jpBold",
+      font: ["enBold", "jpBold"],
       fontSize: 9,
     },
     {
@@ -53,7 +55,7 @@ export const reportTemplate: ReportTemplate = {
       page: 0,
       x: 70,
       y: 152,
-      font: "jpBold",
+      font: ["enBold", "jpBold"],
       fontSize: 9,
     },
     {
@@ -62,7 +64,7 @@ export const reportTemplate: ReportTemplate = {
       page: 0,
       x: 60,
       y: 135,
-      font: "jpBold",
+      font: ["enBold", "jpBold"],
       fontSize: 9,
     },
     {
@@ -71,7 +73,7 @@ export const reportTemplate: ReportTemplate = {
       page: 0,
       x: 72,
       y: 118,
-      font: "jpBold",
+      font: ["enBold", "jpBold"],
       fontSize: 9,
     },
     {
@@ -80,7 +82,7 @@ export const reportTemplate: ReportTemplate = {
       page: 0,
       x: 45,
       y: 101,
-      font: "jpBold",
+      font: ["enBold", "jpBold"],
       fontSize: 9,
     },
     // QR code — Reference ID. (top right, 13pt from right edge)
@@ -114,7 +116,7 @@ export const reportTemplate: ReportTemplate = {
       x: 13,
       y: 14,
       width: 300,
-      font: "jp",
+      font: ["en", "jp"],
       fontSize: 8,
       align: "center",
     },

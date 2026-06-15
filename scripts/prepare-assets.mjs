@@ -25,6 +25,22 @@ async function copyFonts() {
     ),
     resolve(fontDir, "NotoSansJP_700Bold.ttf"),
   );
+
+  await copyFile(
+    resolve(
+      root,
+      "node_modules/@expo-google-fonts/noto-sans/400Regular/NotoSans_400Regular.ttf",
+    ),
+    resolve(fontDir, "NotoSans_400Regular.ttf"),
+  );
+
+  await copyFile(
+    resolve(
+      root,
+      "node_modules/@expo-google-fonts/noto-sans/700Bold/NotoSans_700Bold.ttf",
+    ),
+    resolve(fontDir, "NotoSans_700Bold.ttf"),
+  );
 }
 
 async function createTemplatePdf() {

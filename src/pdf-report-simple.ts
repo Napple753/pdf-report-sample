@@ -22,7 +22,7 @@ export type TextField = {
   page: number;
   x: number;
   y: number;
-  font: string;
+  font: string | string[];
   fontSize: number;
   width?: number;
   align?: "left" | "center" | "right";
@@ -147,6 +147,24 @@ function resolveValue(data: ReportData, key: string): string {
   return String(value);
 }
 
+function selectFont(
+  text: string,
+  fontKeys: string | string[],
+  fonts: Record<string, PDFFont>,
+  fieldKey: string,
+): PDFFont {
+  const keys = Array.isArray(fontKeys) ? fontKeys : [fontKeys];
+  const isAscii = /^[\x20-\x7E]*$/.test(text);
+
+  for (const [index, key] of keys.entries()) {
+    const f = fonts[key];
+    if (!f) continue;
+    if (index === keys.length - 1 || isAscii) return f;
+  }
+
+  throw new Error(`[pdf-report] Missing font: key="${fieldKey}"`);
+}
+
 function drawTextField(args: {
   page: PDFPage;
   field: TextField;
@@ -158,17 +176,12 @@ function drawTextField(args: {
 }) {
   const { page, field, data, fonts, formatters, debug } = args;
 
-  const font = fonts[field.font];
-  if (!font) {
-    throw new Error(
-      `[pdf-report] Missing font: key="${field.key}", font="${field.font}"`,
-    );
-  }
-
   const text =
     field.format && formatters[field.format]
       ? formatters[field.format](args.value, data)
       : args.value;
+
+  const font = selectFont(text, field.font, fonts, field.key);
 
   const textWidth = font.widthOfTextAtSize(text, field.fontSize);
 
