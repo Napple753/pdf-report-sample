@@ -319,7 +319,7 @@ async function drawBarcodeField(args: {
     drawDebugBox(page, {
       x: field.x,
       y: field.y,
-      width: field.width ?? naturalWidth,
+      width: field.width ?? drawWidth,
       height: field.height,
       label: `barcode:${field.key}`,
     });
