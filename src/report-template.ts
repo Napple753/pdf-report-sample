@@ -1,14 +1,16 @@
 import type { ReportTemplate } from "./pdf-report-simple";
 
+const base = import.meta.env.BASE_URL;
+
 export const reportTemplate: ReportTemplate = {
   id: "product_label_v1",
-  templatePdf: "/report-templates/product_label_v1.pdf",
+  templatePdf: `${base}report-templates/product_label_v1.pdf`,
 
   fonts: {
-    en: "/fonts/NotoSans_400Regular.ttf",
-    enBold: "/fonts/NotoSans_700Bold.ttf",
-    jp: "/fonts/NotoSansJP_400Regular.ttf",
-    jpBold: "/fonts/NotoSansJP_700Bold.ttf",
+    en: `${base}fonts/NotoSans_400Regular.ttf`,
+    enBold: `${base}fonts/NotoSans_700Bold.ttf`,
+    jp: `${base}fonts/NotoSansJP_400Regular.ttf`,
+    jpBold: `${base}fonts/NotoSansJP_700Bold.ttf`,
   },
 
   fields: [
