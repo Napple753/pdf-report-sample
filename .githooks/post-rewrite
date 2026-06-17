@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Runs after git commit --amend or git rebase.
+bash .devcontainer/sync-npm.sh
+bash .devcontainer/sync-assets.sh

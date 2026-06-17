@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Runs after git merge/pull.
+bash .devcontainer/sync-npm.sh
+bash .devcontainer/sync-assets.sh

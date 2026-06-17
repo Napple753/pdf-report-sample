@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Runs after git checkout/switch. $3 is 1 for branch checkout, 0 for file checkout.
+if [[ "${3:-0}" == "1" ]]; then
+  bash .devcontainer/sync-npm.sh
+  bash .devcontainer/sync-assets.sh
+fi
+exit 0

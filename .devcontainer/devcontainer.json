@@ -38,6 +38,9 @@
     }
   },
 
-  // コンテナ起動後に .claude ディレクトリのオーナーを修正
-  "postCreateCommand": "sudo chown -R node:node /home/node/.claude || true"
+  // 初回コンテナ作成時：.claude オーナー修正 + npm 依存インストール + Git hooks 設定
+  "postCreateCommand": "sudo chown -R node:node /home/node/.claude || true && bash .devcontainer/sync-npm.sh --force && git config core.hooksPath .githooks",
+
+  // コンテナ起動時：npm 依存 → アセット生成の順に変更チェック
+  "postStartCommand": "bash .devcontainer/sync-npm.sh && bash .devcontainer/sync-assets.sh"
 }

@@ -10,6 +10,8 @@ services:
 
     volumes:
       - ..:/workspace
+      - node-modules:/workspace/node_modules
+      - npm-cache:/home/node/.npm
 
     working_dir: /workspace
 
@@ -17,3 +19,7 @@ services:
       - "5173:5173"
 
     command: sleep infinity
+
+volumes:
+  node-modules:
+  npm-cache:
