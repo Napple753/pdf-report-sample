@@ -26,3 +26,5 @@ USER node
 SHELL ["/bin/zsh", "-c"]
 
 WORKDIR /workspace
+
+ENV HOST=0.0.0.0

@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: vite_devcontainer
+
+    volumes:
+      - ..:/workspace
+
+    working_dir: /workspace
+
+    ports:
+      - "5173:5173"
+
+    command: sleep infinity

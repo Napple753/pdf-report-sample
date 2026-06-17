@@ -1,8 +1,9 @@
 {
   "name": "Node.js + Vite + Claude Code",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
 
   // node ユーザーで実行（Claude Code は root では動かない）
   "remoteUser": "node",
@@ -17,19 +18,17 @@
   },
 
   // 認証情報・設定をコンテナ再構築後も保持するボリューム
-  "mounts": [
-    "source=claude-code-config,target=/home/node/.claude,type=volume"
-  ],
+  "mounts": ["source=claude-code-config,target=/home/node/.claude,type=volume"],
 
   // VSCode 拡張機能
   "customizations": {
     "vscode": {
       "extensions": [
-        "anthropic.claude-code",       // Claude Code パネル
-        "dbaeumer.vscode-eslint",      // ESLint
-        "esbenp.prettier-vscode",      // Prettier
-        "bradlc.vscode-tailwindcss",   // Tailwind CSS（使う場合）
-        "vue.volar"                    // Vue を使う場合（不要なら削除可）
+        "anthropic.claude-code", // Claude Code パネル
+        "dbaeumer.vscode-eslint", // ESLint
+        "esbenp.prettier-vscode", // Prettier
+        "bradlc.vscode-tailwindcss", // Tailwind CSS（使う場合）
+        "vue.volar" // Vue を使う場合（不要なら削除可）
       ],
       "settings": {
         "editor.formatOnSave": true,
